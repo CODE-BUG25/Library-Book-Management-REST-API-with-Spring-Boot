@@ -1,0 +1,8 @@
+$kind: http-request
+url: "{{baseUrl}}/books/103/issue"
+method: PUT
+scripts:
+  - type: afterResponse
+    code: pm.test('200 first time, 400 once copies are exhausted', function () { pm.expect([200, 400]).to.include(pm.response.code); });
+    language: text/javascript
+order: 9000
